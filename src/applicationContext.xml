@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+		
+	<context:component-scan base-package="niit.hospitalsys.dao"></context:component-scan>
+    <context:component-scan base-package="niit.hospitalsys.dao.imp"></context:component-scan>
+  <context:component-scan base-package="niit.hospitalsys.service"></context:component-scan>
+	<!-- SessionFactory对象 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+	    <property name="packagesToScan" value="niit.hospitalsys.entity"/>
+	</bean>
+	<!-- HibernateTemplate对象 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- dao对象 -->
+	<!-- <bean id="userDao" class="com.niit.dao.impl.UserDao"> <property name="ht" 
+		ref="hibernateTemplate" /> </bean> -->
+	<!-- biz对象 -->
+	<!-- <bean id="userBiz" class="com.niit.biz.impl.UserBiz"> <property name="userDao" 
+		ref="userDao" /> </bean> -->
+
+	<!-- 添加事务管理配置 -->
+	<!-- 创建平台事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<!-- 注入连接池 -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 创建事务通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="update*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="delete*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="find*" isolation="DEFAULT" propagation="REQUIRED"
+				read-only="true" />
+			<tx:method name="*" isolation="DEFAULT" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 创建事务切面 -->
+	
+
+<aop:config>
+		<aop:pointcut expression="execution(* niit.hospitalsys.service.*.*(..))"
+			id="myPt" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="myPt" />
+	    
+	</aop:config> 
+</beans>
+

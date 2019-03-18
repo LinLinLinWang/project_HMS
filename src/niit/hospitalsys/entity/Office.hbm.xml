@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-6-3 20:03:23 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="hospital_system" dynamic-insert="false" dynamic-update="false" mutable="true" name="Office" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="office">
+        <id name="dofficeld" type="int">
+            <column name="DOfficeld"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="dofficeName" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="DOfficeName"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="doctors" optimistic-lock="true" sort="unsorted" table="doctor">
+            <key on-delete="noaction">
+                <column name="DOfficeld"/>
+            </key>
+            <one-to-many class="Doctor" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="doctors_1" optimistic-lock="true" sort="unsorted" table="doctor">
+            <key on-delete="noaction">
+                <column name="DOfficeld"/>
+            </key>
+            <one-to-many class="Doctor" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

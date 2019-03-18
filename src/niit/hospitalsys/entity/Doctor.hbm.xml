@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-6-3 20:03:23 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="hospital_system" dynamic-insert="false" dynamic-update="false" mutable="true" name="Doctor" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="doctor">
+        <id name="dregisteId" type="string">
+            <column length="40" name="DRegisteId"/>
+            <generator class="foreign">
+                <param name="property">user</param>
+            </generator>
+        </id>
+        <many-to-one class="Entitler" embed-xml="true" fetch="select" insert="true" name="entitler" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="DEntitle"/>
+        </many-to-one>
+        <many-to-one class="Office" embed-xml="true" fetch="select" insert="true" name="office" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="DOfficeld"/>
+        </many-to-one>
+        <one-to-one class="User" constrained="true" embed-xml="true" name="user"/>
+    </class>
+</hibernate-mapping>

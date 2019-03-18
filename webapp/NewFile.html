@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery.js"></script>
+    <script>
+  
+    var time;
+        window.onload = function() {
+            var i = 10;
+            var j = 0;
+            var e = target;
+            var win = document.documentElement || document.body;
+          
+         function intern() {
+            	
+                var width = e.clientWidth;
+                var height = e.clientHeight;
+                var left = parseFloat(e.style.left);
+                var top = parseFloat(e.style.top);
+                var windowWidth = win.clientWidth;
+                var windowHeight = win.clientHeight;
+                if (windowWidth - width < (left + i)) {
+                    i = -i;
+                } else if ((left + i) < 0) {
+                    i = -i;
+                }
+                if (windowHeight - height < (top + j)) {
+                    j = -j;
+                } else if ((top + j) < 0) {
+                    j = -j;
+                }
+                e.style.left = left + i + "px";
+                e.style.top = top + j + "px";
+            }
+         time= setInterval(intern, 100);
+         $("#target").on("click",function(){
+             alert("成功");
+             
+             clearInterval(time);
+             document.getElementById("target").style.display='none';
+         });
+        };
+      
+    </script>
+</head>
+ 
+<body>
+    <div id="target"  style="width: 30px; height: 30px; position: absolute; top:100px; left: 0px;"><p style="ont-family: Georgia, serif;font-size: 24px ;color: skyblue ;border: 2px;">门诊时间上午十点到下午五点</p></div>
+</body>
+
+</html>

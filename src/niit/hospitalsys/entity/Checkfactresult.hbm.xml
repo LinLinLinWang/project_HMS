@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-6-3 20:03:23 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="hospital_system" dynamic-insert="false" dynamic-update="false" mutable="true" name="Checkfactresult" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="checkfactresult">
+        <composite-id class="CheckfactresultId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="phid" type="int">
+                <column name="PHId"/>
+            </key-property>
+            <key-property name="pexamineFact" type="string">
+                <column length="20" name="PExamineFact"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="Patienthistory" embed-xml="true" fetch="select" insert="false" name="patienthistory" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column name="PHId" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="pexamineSingleResult" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="PExamineSingleResult" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pshowResultTime" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="PShowResultTime" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

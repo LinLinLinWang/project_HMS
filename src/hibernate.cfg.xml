@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hospital_system?useUnicode=true&amp;characterEncoding=utf-8</property>
+
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">2486</property>
+
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- Hibernate整合C3P0连接池(不可省略) -->
+		<property name="hibernate.connecton.provider_class">
+			org.hibernate.c3p0.internal.C3P0ConnectionProvider
+		</property>
+
+		<!-- C3P0参数 -->
+		<property name="hibernate.c3p0.min_size">10</property>
+		<property name="hibernate.c3p0.max_size">50</property>
+		<!-- 毫秒 -->
+		<property name="hibernate.c3p0.timeout">5000</property>
+
+
+		<!-- 2.扩展参数 -->
+		<!-- 显示SQL语句 -->
+		<!--<property name="hibernate.show_sql">true</property>-->
+		<!-- 格式化SQL语句 -->
+		<property name="hibernate.format_sql">true</property>
+		<!-- 自动维护表 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		
+	<!-- <mapping resource="niit/hospitalsys/entity/Answerquestion.hbm.xml" />
+		<mapping resource="niit/hospitalsys/entity/Bloodhistory.hbm.xml" />
+		<mapping resource="niit/hospitalsys/entity/Blooduser.hbm.xml" />
+		<mapping resource="niit/hospitalsys/entity/Checkfactresult.hbm.xml" />
+		<mapping resource="niit/hospitalsys/entity/Doctor.hbm.xml" />
+		<mapping resource="niit/hospitalsys/entity/Eachmoney.hbm.xml" />
+		<mapping resource="niit/hospitalsys/entity/Entitler.hbm.xml" />
+		<mapping resource="niit/hospitalsys/entity/Office.hbm.xml" />
+		<mapping resource="niit/hospitalsys/entity/Patienthistory.hbm.xml" />
+		<mapping resource="niit/hospitalsys/entity/User.hbm.xml" /> -->
+  
+     
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-6-3 20:03:23 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="hospital_system" dynamic-insert="false" dynamic-update="false" mutable="true" name="Patienthistory" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="patienthistory">
+        <id name="phid" type="java.lang.Integer">
+            <column name="PHId"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="pregisteId" optimistic-lock="true" type="string" unique="false">
+            <column length="40" name="PRegisteId" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pcomeHospitalTime" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="PComeHospitalTime" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="ptype" optimistic-lock="true" type="int" unique="false">
+            <column name="PType" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pillnessDetails" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="PIllnessDetails"/>
+        </property>
+        <property generated="never" lazy="false" name="pexamineFacts" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="PExamineFacts"/>
+        </property>
+        <property generated="never" lazy="false" name="dprescription" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="DPrescription"/>
+        </property>
+        <property generated="never" lazy="false" name="dmedicines" optimistic-lock="true" type="string" unique="false">
+            <column name="DMedicines"/>
+        </property>
+        <property generated="never" lazy="false" name="dfoodSuggestion" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="DFoodSuggestion"/>
+        </property>
+        <property generated="never" lazy="false" name="dpreventSuggestion" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="DPreventSuggestion"/>
+        </property>
+        <property generated="never" lazy="false" name="dexamineResult" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="DExamineResult"/>
+        </property>
+        <property generated="never" lazy="false" name="dregisteId" optimistic-lock="true" type="string" unique="false">
+            <column length="40" name="DRegisteId" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="phomeHosptial" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="PHomeHosptial"/>
+        </property>
+        <property generated="never" lazy="false" name="poutHosptial" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="POutHosptial"/>
+        </property>
+        <property generated="never" lazy="false" name="dotherThings" optimistic-lock="true" type="string" unique="false">
+            <column name="DOtherThings"/>
+        </property>
+        <property generated="never" lazy="false" name="pmoneyType" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="PMoneyType" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="dmedicineUse" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="DMedicineUse"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="checkfactresults" optimistic-lock="true" sort="unsorted" table="checkfactresult">
+            <key on-delete="noaction">
+                <column name="PHId" not-null="true"/>
+            </key>
+            <one-to-many class="Checkfactresult" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="checkfactresults_1" optimistic-lock="true" sort="unsorted" table="checkfactresult">
+            <key on-delete="noaction">
+                <column name="PHId" not-null="true"/>
+            </key>
+            <one-to-many class="Checkfactresult" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

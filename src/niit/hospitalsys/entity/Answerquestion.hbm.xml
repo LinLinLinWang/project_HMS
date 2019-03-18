@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-6-3 20:03:23 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="hospital_system" dynamic-insert="false" dynamic-update="false" mutable="true" name="Answerquestion" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="answerquestion">
+        <id name="registeId" type="string">
+            <column length="40" name="RegisteId"/>
+            <generator class="foreign">
+                <param name="property">user</param>
+            </generator>
+        </id>
+        <one-to-one class="User" constrained="true" embed-xml="true" name="user"/>
+        <property generated="never" lazy="false" name="question" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="Question"/>
+        </property>
+        <property generated="never" lazy="false" name="answer" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="Answer"/>
+        </property>
+    </class>
+</hibernate-mapping>

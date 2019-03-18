@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-6-3 20:03:23 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="hospital_system" dynamic-insert="false" dynamic-update="false" mutable="true" name="Bloodhistory" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="bloodhistory">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="dregisteId" optimistic-lock="true" type="string" unique="false">
+            <column length="40" name="DRegisteId"/>
+        </property>
+        <property generated="never" lazy="false" name="bloodScale" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="BloodScale"/>
+        </property>
+        <property generated="never" lazy="false" name="time" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="Time"/>
+        </property>
+    </class>
+</hibernate-mapping>

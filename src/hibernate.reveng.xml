@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="hospital_system" match-name="answerquestion"/>
+  <table-filter match-catalog="hospital_system" match-name="bloodhistory"/>
+  <table-filter match-catalog="hospital_system" match-name="blooduser"/>
+  <table-filter match-catalog="hospital_system" match-name="checkfactresult"/>
+  <table-filter match-catalog="hospital_system" match-name="doctor"/>
+  <table-filter match-catalog="hospital_system" match-name="eachmoney"/>
+  <table-filter match-catalog="hospital_system" match-name="entitler"/>
+  <table-filter match-catalog="hospital_system" match-name="office"/>
+  <table-filter match-catalog="hospital_system" match-name="patienthistory"/>
+  <table-filter match-catalog="hospital_system" match-name="user"/>
+</hibernate-reverse-engineering>
